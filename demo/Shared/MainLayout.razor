@@ -65,8 +65,30 @@
 </AppContent>
 
 @code {
-    public BackgroundModes BackgroundMode { get; set; } = BackgroundModes.Image;
     private string themeText = "Default";
+    private BackgroundModes backgroundMode = BackgroundModes.Image;
+    public BackgroundModes BackgroundMode
+    {
+        get => backgroundMode;
+        set
+        {
+            backgroundMode = value;
+
+            switch (BackgroundMode)
+            {
+                case BackgroundModes.Dark: 
+                    themeText = "Dark";
+                    break;
+                case BackgroundModes.Light:
+                    themeText = "Light";
+                    break;
+                case BackgroundModes.Image:
+                default:
+                    themeText = "Default";
+                    break;
+            }
+        }
+    }
 
     void ToggleTheme()
     {
@@ -74,16 +96,13 @@
         {
             case BackgroundModes.Image: 
                 BackgroundMode = BackgroundModes.Dark;
-                themeText = "Dark";
                 break;
             case BackgroundModes.Dark:
                 BackgroundMode = BackgroundModes.Light;
-                themeText = "Light";
                 break;
             case BackgroundModes.Light:
             default:
                 BackgroundMode = BackgroundModes.Image;
-                themeText = "Default";
                 break;
         }
     }
