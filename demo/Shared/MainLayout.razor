@@ -28,26 +28,26 @@
     <AppDrawerContent>
         <AppDrawerHeader Image="mobsites-logo.png" UseImage />
         <AppDrawerContentList>
-            <AppDrawerContentDivider />
+            <AppDrawerContentDivider OverrideParentColors />
             <AppDrawerContentListAction Href="/" tabindex="0">
                 <Icon Variant="home" Text="Home" Spacing="10" Style="padding-left: 15px;" />
             </AppDrawerContentListAction>
-            <AppDrawerContentSubheader>Theme</AppDrawerContentSubheader>
+            <AppDrawerContentSubheader OverrideParentColors>Theme</AppDrawerContentSubheader>
             <AppDrawerContentListAction @onclick="@((e) => ToggleTheme())">
                 <Icon Variant="invert_colors" Text="@themeText" Spacing="10" Style="padding-left: 15px;" />
             </AppDrawerContentListAction>
-            <AppDrawerContentDivider />
-            <AppDrawerContentSubheader>Blazor Components</AppDrawerContentSubheader>
-            <AppDrawerContentListAction Href="/app-drawer">
+            <AppDrawerContentDivider OverrideParentColors />
+            <AppDrawerContentSubheader OverrideParentColors>Blazor Components</AppDrawerContentSubheader>
+            <AppDrawerContentListAction Href="/blazor-app-drawer">
                 <Icon Variant="menu_open" Text="App Drawer" Spacing="10" Style="padding-left: 15px;" />
             </AppDrawerContentListAction>
-            <AppDrawerContentListAction Href="/icon">
+            <AppDrawerContentListAction Href="/blazor-icon">
                 <Icon Variant="info" Text="Icon" Spacing="10" Style="padding-left: 15px;" />
             </AppDrawerContentListAction>
-            <AppDrawerContentListAction Href="/signature-pad">
+            <AppDrawerContentListAction Href="/blazor-signature-pad">
                 <Icon Variant="edit" Text="Signature Pad" Spacing="10" Style="padding-left: 15px;" />
             </AppDrawerContentListAction>
-            <AppDrawerContentListAction Href="/top-app-bar">
+            <AppDrawerContentListAction Href="/blazor-top-app-bar">
                 <Icon Variant="line_weight" Text="Top App Bar" Spacing="10" Style="padding-left: 15px;" />
             </AppDrawerContentListAction>
         </AppDrawerContentList>
