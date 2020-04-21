@@ -17,6 +17,7 @@
     <ProjectReference Include="..\..\Blazor.TopAppBar\src\Blazor.TopAppBar.csproj" />
     <ProjectReference Include="..\..\Blazor.AppDrawer\src\Blazor.AppDrawer.csproj" />
     <ProjectReference Include="..\..\Blazor.Icon\src\Blazor.Icon.csproj" />
+    <ProjectReference Include="..\..\Blazor.SignaturePad\src\Blazor.SignaturePad.csproj" />
   </ItemGroup>
 
 </Project>

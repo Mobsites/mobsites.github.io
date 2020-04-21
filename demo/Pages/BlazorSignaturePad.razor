@@ -1,10 +1,27 @@
 @page "/blazor-signature-pad"
 
+@code {
+	[CascadingParameter] MainLayout MainLayout { get; set; }
+}
+
+@{
+	string codeBG = MainLayout.BackgroundMode == BackgroundModes.Dark
+		? "code-dark-bg"
+		: null;
+}
+
 <div class="stackedit">
   <div class="stackedit__html">
     <h1>Blazor Signature Pad</h1>
 
-    Docs coming soon!
+    <SignaturePad BackgroundMode="MainLayout.BackgroundMode">
+      <SignaturePadFooter>
+        <SignaturePadPen><Icon Variant="edit" /></SignaturePadPen>
+        <SignaturePadClear><Icon Variant="clear" /></SignaturePadClear>
+        <SignaturePadUndo><Icon Variant="undo" /></SignaturePadUndo>
+        <SignaturePadSave><Icon Variant="save" /></SignaturePadSave>
+      </SignaturePadFooter>
+    </SignaturePad>
     
   </div>
 </div>
