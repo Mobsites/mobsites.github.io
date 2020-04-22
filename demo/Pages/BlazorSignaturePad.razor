@@ -1,19 +1,24 @@
-@page "/blazor-signature-pad"
+@page "/blazor/signature-pad"
 
 @code {
 	[CascadingParameter] MainLayout MainLayout { get; set; }
 }
 
 @{
-	string codeBG = MainLayout.BackgroundMode == BackgroundModes.Dark
-		? "code-dark-bg"
-		: null;
+  if (MainLayout.BackgroundMode == BackgroundModes.Dark)
+  {
+    <style>
+      code {
+        background: #121212 !important;
+      }
+    </style>
+  }
 }
 
 <div class="stackedit">
-  <div class="stackedit__html">
-    <h1>Blazor Signature Pad</h1>
-
+  <div class="stackedit__html"><h1 id="blazor-signature-pad">Blazor Signature Pad</h1>
+<p>A Blazor UI component that utilizes <a href="https://github.com/szimek">Szymon Nowak</a>’s Signature Pad javascript library to implement smooth signature drawing on a HTML5 canvas.</p>
+<p><em><strong>Don’t worry! You don’t have to touch any javascript to make use of this library. Blazor Signature Pad abstracts all of that away for you. Just plug and play, baby.</strong></em></p>
     <SignaturePad KeepState BackgroundMode="MainLayout.BackgroundMode">
       <SignaturePadFooter FooterDirective="Sign above">
         <SignaturePadPen><Icon Variant="edit" /></SignaturePadPen>
@@ -22,6 +27,77 @@
         <SignaturePadSave><Icon Variant="save" /></SignaturePadSave>
       </SignaturePadFooter>
     </SignaturePad>
-    
-  </div>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li>Add <a href="https://www.nuget.org/packages/Mobsites.Blazor.SignaturePad/">Nuget</a> package:</li>
+</ol>
+<pre class=" language-shell"><code class="prism  language-shell">dotnet add package Mobsites.Blazor.SignaturePad --version 1.0.0
+</code></pre>
+<ol start="2">
+<li>Add the following link tag to <code>index.html</code> (WebAssembly) or <code>_Host.cshtml</code> (Server) just above the closing <code>&lt;/head&gt;</code> tag, along with your other link tags:</li>
+</ol>
+<pre class=" language-html"><code class="prism  language-html"><span class="token comment">&lt;!-- The order of your style links obviously matters, so reorder them if any conflicts arise --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_content/Mobsites.Blazor.SignaturePad/bundle.css<span class="token punctuation">"</span></span>  <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span>  <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<ol start="3">
+<li>Add the following script tag to <code>index.html</code> (WebAssembly) or <code>_Host.cshtml</code> (Server) just above the closing <code>&lt;/body&gt;</code> tag, along with your other script tags*:</li>
+</ol>
+<pre class=" language-html"><code class="prism  language-html"><span class="token comment">&lt;!-- Place this below any _framework scripts! --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span>  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_content/Mobsites.Blazor.SignaturePad/bundle.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>*<strong>Be sure to place this script tag below any _framework scripts needed by the Blazor application!</strong></p>
+<ol start="4">
+<li>Add the following using statement to the <code>_Imports.razor</code> file:</li>
+</ol>
+<pre class=" language-html"><code class="prism  language-html">@@using Mobsites.Blazor
+</code></pre>
+<ol start="5">
+<li>Add the following markup to whatever Blazor page or component you like:</li>
+</ol>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SignaturePad</span> <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p>That’s it. You should now have a functioning signature pad. No javascript required…on your part, of course.</p>
+<h2 id="signature-pad-attributes">Signature Pad Attributes</h2>
+<p>Below highlights the attributes specific to this component. For info on attributes common to all components, see the <code>Common Attributes</code> pages (or use intellisense if it’s working):</p>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SignaturePad</span>  <span class="token attr-name">Image</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>string (URL or URL fragment for image source to displayed as a backdrop inside drawing area)<span class="token punctuation">"</span></span>
+               <span class="token attr-name">ImageWidth</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>int (defaults to 192px)<span class="token punctuation">"</span></span>
+               <span class="token attr-name">ImageHeight</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>int (defaults to 192px)<span class="token punctuation">"</span></span>
+               <span class="token attr-name">OnSignatureChange</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>EventCallback&lt;ChangeEventArgs&gt; (assign a C# function to get notified when signature changes)<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+	...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>SignaturePad</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<h2 id="signature-pad-footer-and-actions">Signature Pad Footer and Actions</h2>
+<p>Out of the box, Blazor Signature Pad comes with a few helper components:</p>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SignaturePad</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SignaturePadFooter</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SignaturePadPen</span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SignaturePadClear</span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SignaturePadUndo</span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SignaturePadSave</span>  <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>SignaturePadFooter</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>SignaturePad</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>Use as many of the footer actions as you want, in whichever order you wish. <strong>Note: the footer and its actions must be embedded as above.</strong></p>
+<p><em>You can, of course, elect to bring your own markup actions, such as buttons or whatnot, and place them wherever you wish by simply using a reference to the Signature Pad component and calling the appropriate action in your event handler. More on that below.</em></p>
+<h2 id="signature-pad-c-actions">Signature Pad C# Actions</h2>
+<p>Each of the footer actions can be replicated outside of the Signature Pad component by using a reference to the component and calling the appropriate action in your event handler:</p>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SignaturePad</span> <span class="token attr-name">@@ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>signaturePad<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+	...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>SignaturePad</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>  <span class="token attr-name">@@onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@@(() =&gt; signaturePad?.Clear())<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Clear<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<pre class=" language-csharp"><code class="prism  language-csharp"><span class="token keyword">private</span> SignaturePad  signaturePad<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="keeping-state">Keeping State</h2>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>SignaturePad</span> <span class="token attr-name">KeepState</span><span class="token punctuation">&gt;</span></span>
+	...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>SignaturePad</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>Keeping state is as simple as setting the <code>KeepState</code> attribute on the Signature Pad as above. This component will then keep relevant state in the browser’s storage. To get a sense of this, check out the <a href="https://www.mobsites.com/Blazor.SignaturePad/">demo</a>, change some options, and refresh the browser to force a reload of the app.</p>
+<p>To learn more about this feature, which is common to all our stateful components, check out <a href="/blazor/keeping-state">Keeping State</a>.</p>
+<h2 id="css-conflicts">CSS Conflicts</h2>
+<p>You may find that your current styles conflict with this library’s default css rules. For instance, the default Blazor template app bar z-index was lower than the effects applied to the Signature Pad, so I gave the template app bar a higher z-index so that it would remain on top of the Signature Pad when scrolling.</p>
+<p>You can see all of this library’s css <a href="https://github.com/Mobsites/Blazor.SignaturePad/blob/master/src/app.scss">here</a>.</p>
+</div>
 </div>
