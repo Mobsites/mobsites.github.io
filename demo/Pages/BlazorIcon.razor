@@ -5,67 +5,101 @@
 }
 
 @{
-	string codeBG = MainLayout.BackgroundMode == BackgroundModes.Dark
-		? "code-dark-bg"
-		: null;
+  if (MainLayout.BackgroundMode == BackgroundModes.Dark)
+  {
+    <style>
+      code {
+        background: #121212 !important;
+      }
+    </style>
+  }
 }
 
 <div class="stackedit">
-  <div class="stackedit__html">
-    <h1>Blazor Icon</h1>
-    <p>Component for rendering an icon.</p>
-    <p>We know, you are thinking, "Who needs a component to render a simple icon?"</p>
-    <p>
-      And you would be right...except an ordinary html <code class="@codeBG">&lt;i&gt;&lt;/i&gt;</code> tag doesn't come with built-in sizes or themes, 
-      such as dark and light modes, now does it?
-    </p>
-    <p>Go ahead. Hit this button <Icon Variant="invert_colors" Clickable @onclick="@((e) => MainLayout.ToggleContrastMode())" /> and watch how <i>all</i> the icons change colors.</p>
-    <p>See what we mean? And that's not all. This component can keep state should the need arise.</p>
-
-    <h2>Attribute Highlights</h2>
-    Below highlights the attributes specific to this component. For info on attributes common to all components, see the <code class="@codeBG">Common Attributes</code> pages.
-    <pre class=" language-html"><code class="prism  language-html @codeBG"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>string (Material Icon ligature or textual name)<span class="token punctuation">"</span></span>
+  <div class="stackedit__html"><h1 id="blazor-icon">Blazor Icon</h1>
+<p>A Blazor UI component for rendering an icon.</p>
+<p>We know,  “Who needs a component to render a simple icon?”</p>
+<p>And you would be right…except an ordinary html <code>&lt;i&gt;&lt;/i&gt;</code> tag doesn’t come with built-in sizes or themes,<br>
+such as dark and light modes, now does it?</p>
+<p>Go ahead. Hit this icon <Icon Variant="invert_colors" Clickable @onclick="@((e) => MainLayout.ToggleContrastMode())" /> and watch how it and the others below change colors. See what we mean?</p>
+<p>And that’s not all. This component can keep state should the need arise.</p>
+<p>Last but not least, we plan to incorporate other icon libraries as well. Imagine: One icon to rule them all.</p>
+<h2 id="currently-supports">Currently Supports</h2>
+<ul>
+<li>Material Icons</li>
+<li>Images</li>
+</ul>
+<h2 id="future-plans">Future Plans</h2>
+<ul>
+<li>Font Awesome</li>
+<li>Open Iconic</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li>Add <a href="https://www.nuget.org/packages/Mobsites.Blazor.Icon/">Nuget</a> package:</li>
+</ol>
+<pre class=" language-shell"><code class="prism  language-shell">dotnet add package Mobsites.Blazor.Icon--version 1.0.0-preview1
+</code></pre>
+<ol start="2">
+<li>Add the following link tag to <code>index.html</code> (WebAssembly) or <code>_Host.cshtml</code> (Server) just above the closing <code>&lt;/head&gt;</code> tag, along with your other link tags:</li>
+</ol>
+<pre class=" language-html"><code class="prism  language-html"><span class="token comment">&lt;!-- The order of your style links obviously matters, so reorder them if any conflicts arise --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_content/Mobsites.Blazor.Icon/bundle.css<span class="token punctuation">"</span></span>  <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span>  <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<ol start="3">
+<li>Add the following using statement to the <code>_Imports.razor</code> file:</li>
+</ol>
+<pre class=" language-html"><code class="prism  language-html">@@using Mobsites.Blazor
+</code></pre>
+<ol start="4">
+<li>Add the following markup to whatever Blazor page or component you like:</li>
+</ol>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>home<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p>That’s it. Run your app, and you should now see the Material home icon there.</p>
+<h2 id="attribute-highlights">Attribute Highlights</h2>
+<p>Below highlights the attributes specific to this component. For info on attributes common to all components, see the <code>Common Attributes</code> pages.</p>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>string (Material Icon ligature or textual name)<span class="token punctuation">"</span></span>
       <span class="token attr-name">Text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>string (Optional accompanying text to display)<span class="token punctuation">"</span></span>
       <span class="token attr-name">Spacing</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>int (Margin spacing between icon and accompanying text)<span class="token punctuation">"</span></span>
       <span class="token attr-name">Size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>enum of Icon.Sizes (The size of icon to render)<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-    </code></pre>
-
-    <h2>Built-in Sizes</h2>
-    <Icon Variant="account_circle" Text="Account" Spacing="10" Size="Icon.Sizes.XS" />
-    <pre class=" language-html"><code class="prism  language-html @codeBG"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>account_circle<span class="token punctuation">"</span></span>
+</code></pre>
+<h2 id="built-in-sizes">Built-in Sizes</h2>
+<Icon Variant="account_circle" Text="Account" Spacing="10" Size="Icon.Sizes.XS" />
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>account_circle<span class="token punctuation">"</span></span>
       <span class="token attr-name">Text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Account<span class="token punctuation">"</span></span>
       <span class="token attr-name">Spacing</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span>
       <span class="token attr-name">Size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Icon.Sizes.XS<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-    </code></pre>
-
-    <Icon Variant="account_circle" Text="Account" Spacing="10" Size="Icon.Sizes.SM" />
-    <pre class=" language-html"><code class="prism  language-html @codeBG"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>account_circle<span class="token punctuation">"</span></span>
+</code></pre>
+<Icon Variant="account_circle" Text="Account" Spacing="10" Size="Icon.Sizes.SM" />
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>account_circle<span class="token punctuation">"</span></span>
       <span class="token attr-name">Text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Account<span class="token punctuation">"</span></span>
       <span class="token attr-name">Spacing</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span>
       <span class="token attr-name">Size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Icon.Sizes.SM<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-    </code></pre>
-
-    <Icon Variant="account_circle" Text="Account" Spacing="10" Size="Icon.Sizes.LG" />
-    <pre class=" language-html"><code class="prism  language-html @codeBG"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>account_circle<span class="token punctuation">"</span></span>
+</code></pre>
+<Icon Variant="account_circle" Text="Account" Spacing="10" Size="Icon.Sizes.LG" />
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>account_circle<span class="token punctuation">"</span></span>
       <span class="token attr-name">Text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Account<span class="token punctuation">"</span></span>
       <span class="token attr-name">Spacing</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span>
       <span class="token attr-name">Size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Icon.Sizes.LG<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-    </code></pre>
-
-    <Icon Variant="account_circle" Text="Account" Spacing="10" Size="Icon.Sizes.XL" />
-    <pre class=" language-html"><code class="prism  language-html @codeBG"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>account_circle<span class="token punctuation">"</span></span>
+</code></pre>
+<Icon Variant="account_circle" Text="Account" Spacing="10" Size="Icon.Sizes.XL" />
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>account_circle<span class="token punctuation">"</span></span>
       <span class="token attr-name">Text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Account<span class="token punctuation">"</span></span>
       <span class="token attr-name">Spacing</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span>
       <span class="token attr-name">Size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Icon.Sizes.XL<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-    </code></pre>
-
-    <h2>Images too!</h2>
-    <Icon Image="dark-github.png" DarkModeImage="light-github.png" Text="GitHub" Spacing="10" Size="Icon.Sizes.SM" DarkModeColor="White" OverrideParentColors />
-    <pre class=" language-html"><code class="prism  language-html @codeBG"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Image</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dark-github.png<span class="token punctuation">"</span></span>
-      <span class="token attr-name">DarkModeImage</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>light-github.png<span class="token punctuation">"</span></span>
+</code></pre>
+<h2 id="images-too">Images too!</h2>
+<Icon Image="dark-github.png" DarkModeImage="light-github.png" Text="GitHub" Spacing="10" Size="Icon.Sizes.SM" DarkModeColor="White" OverrideParentColors />
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Image</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>github.png<span class="token punctuation">"</span></span>
       <span class="token attr-name">Text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>GitHub<span class="token punctuation">"</span></span>
       <span class="token attr-name">Spacing</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span>
       <span class="token attr-name">Size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Icon.Sizes.SM<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-    </code></pre>
-  </div>
+</code></pre>
+<h2 id="keeping-state">Keeping State</h2>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">KeepState</span> <span class="token attr-name">...</span> <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p>Keeping state is as simple as setting the <code>KeepState</code> attribute on the Icon as above. This component will then keep relevant state in the browser’s storage. To get a sense of this, check out the <a href="https://www.mobsites.com/Blazor.Icon/">demo</a>, change some options, and refresh the browser to force a reload of the app.</p>
+<p>To learn more about this feature, which is common to all our stateful components, check out <a href="/blazor/keeping-state">Keeping State</a>.</p>
+</div>
 </div>

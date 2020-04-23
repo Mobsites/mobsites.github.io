@@ -1,5 +1,20 @@
 @page "/blazor/keeping-state"
 
+@code {
+	[CascadingParameter] MainLayout MainLayout { get; set; }
+}
+
+@{
+  if (MainLayout.BackgroundMode == BackgroundModes.Dark)
+  {
+    <style>
+      code {
+        background: #121212 !important;
+      }
+    </style>
+  }
+}
+
 <div class="stackedit">
   <div class="stackedit__html">
     <h1>Keeping State</h1>
