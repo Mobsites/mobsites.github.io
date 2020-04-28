@@ -1,0 +1,143 @@
+﻿@inherits LayoutComponentBase
+
+<TopAppBar
+    KeepState
+    Id="1"
+    AboveAppDrawer
+    Variant="TopAppBar.Variants.Fixed"
+    Color="white"
+    DarkModeColor="#00bef2"
+    @bind-BackgroundMode="BackgroundMode"
+    BackgroundColor="rgb(5, 39, 103)">
+    <TopAppBarHeader>
+        <Icon Variant="menu" Style="padding-left: 5px;padding-right: 12px;cursor: pointer;" />
+        <TopAppBarHeaderLogo Src="mobsites-logo.png" />
+        <TopAppBarHeaderTitle>Mobsites</TopAppBarHeaderTitle>
+    </TopAppBarHeader>
+    <TopAppBarActions ShowActionsAlways>
+        <a href="https://github.com/Mobsites" target="_blank" style="margin-right: 10px;">
+            <Icon Image="light-github.png" DarkModeImage="light-github.png" LightModeImage="dark-github.png" />
+        </a>
+        <a href="https://github.com/allan-mobley-jr" target="_blank" style="margin-right: 10px;">
+            <Icon Image="me.png" />
+        </a>
+        <a href="https://twitter.com/allan_mobley_jr" target="_blank" style="margin-right: 5px;">
+            <Icon Image="twitter.png" />
+        </a>
+    </TopAppBarActions>
+</TopAppBar>
+<AppDrawer
+    KeepState
+    Id="1"
+    Color="white"
+    DarkModeColor="#00bef2"
+    @bind-BackgroundMode="BackgroundMode"
+    BackgroundImage="app-drawer-bg.jpg">
+    <AppDrawerContent>
+        <AppDrawerHeader Image="mobsites-logo.png" UseImage />
+        <AppDrawerContentList>
+            <AppDrawerContentDivider OverrideParentColors />
+            <AppDrawerContentListAction Href="/" tabindex="0">
+                <Icon Variant="home" Text="Home" Spacing="20" Style="padding-left: 15px;" />
+            </AppDrawerContentListAction>
+
+            <AppDrawerContentSubheader OverrideParentColors>Theme</AppDrawerContentSubheader>
+            <AppDrawerContentListAction @onclick="@((e) => ToggleTheme())">
+                <Icon Variant="invert_colors" Text="@themeText" Spacing="20" Style="padding-left: 15px;" />
+            </AppDrawerContentListAction>
+
+            <AppDrawerContentDivider OverrideParentColors />
+            <AppDrawerContentSubheader OverrideParentColors>Blazor Components</AppDrawerContentSubheader>
+            <AppDrawerContentListAction Href="/blazor/app-drawer">
+                <Icon Variant="menu_open" Text="App Drawer" Spacing="20" Style="padding-left: 15px;" />
+            </AppDrawerContentListAction>
+            <AppDrawerContentListAction Href="/blazor/icon">
+                <Icon Variant="info" Text="Icon" Spacing="20" Style="padding-left: 15px;" />
+            </AppDrawerContentListAction>
+            <AppDrawerContentListAction Href="/blazor/signature-pad">
+                <Icon Variant="edit" Text="Signature Pad" Spacing="20" Style="padding-left: 15px;" />
+            </AppDrawerContentListAction>
+            <AppDrawerContentListAction Href="/blazor/top-app-bar">
+                <Icon Variant="line_weight" Text="Top App Bar" Spacing="20" Style="padding-left: 15px;" />
+            </AppDrawerContentListAction>
+
+            <AppDrawerContentDivider OverrideParentColors />
+            <AppDrawerContentSubheader OverrideParentColors>Common Attributes</AppDrawerContentSubheader>
+            <AppDrawerContentListAction Href="/blazor/themes">
+                <Icon Variant="palette" Text="Themes" Spacing="20" Style="padding-left: 15px;" />
+            </AppDrawerContentListAction>
+            <AppDrawerContentListAction Href="/blazor/keeping-state">
+                <Icon Variant="cached" Text="Keeping State" Spacing="20" Style="padding-left: 15px;" />
+            </AppDrawerContentListAction>
+
+        </AppDrawerContentList>
+    </AppDrawerContent>
+</AppDrawer>
+
+<AppContent 
+    BackgroundMode="BackgroundMode" 
+    DarkModeBackgroundColor="black"
+    DarkModeColor="#00bef2"
+    LightModeBackgroundColor="white">
+    <main>
+        <CascadingValue Value="this">
+            @Body
+        </CascadingValue>
+    </main>
+</AppContent>
+
+@code {
+    private string themeText = "Dark";
+    private BackgroundModes backgroundMode = BackgroundModes.Dark;
+    public BackgroundModes BackgroundMode
+    {
+        get => backgroundMode;
+        set
+        {
+            backgroundMode = value;
+            themeText = backgroundMode.ToString();
+        }
+    }
+
+    public void ToggleContrastMode()
+    {
+        switch (BackgroundMode)
+        {
+            case BackgroundModes.Dark:
+                BackgroundMode = BackgroundModes.Light;
+                break;
+            case BackgroundModes.Light:
+            default:
+                BackgroundMode = BackgroundModes.Dark;
+                break;
+        }
+
+        StateHasChanged();
+    }
+
+    public void ToggleTheme()
+    {
+        switch (BackgroundMode)
+        {
+            case BackgroundModes.Image: 
+                BackgroundMode = BackgroundModes.Dark;
+                break;
+            case BackgroundModes.Dark:
+                BackgroundMode = BackgroundModes.Light;
+                break;
+            case BackgroundModes.Light:
+            default:
+                BackgroundMode = BackgroundModes.Image;
+                break;
+        }
+
+        StateHasChanged();
+    }
+
+    enum Themes
+    {
+        Normal,
+        Dark,
+        Light
+    }
+}

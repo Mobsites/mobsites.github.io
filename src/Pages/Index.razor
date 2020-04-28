@@ -1,0 +1,25 @@
+﻿@page "/"
+
+@code {
+	[CascadingParameter] MainLayout MainLayout { get; set; }
+}
+
+@{
+  if (MainLayout.BackgroundMode == BackgroundModes.Dark)
+  {
+    <style>
+      code {
+        background: #121212 !important;
+      }
+    </style>
+  }
+}
+
+<div class="stackedit">
+  <div class="stackedit__html"><h1 id="long-live-open-source">Long Live Open Source!</h1>
+<p>Here at Mobsites we are dedicated to bringing <em><strong>free</strong></em> software solutions to further the openness of the web and make it better for everyone. 
+Each <em><strong>freeware</strong></em> that we produce or publish is done so openly on <a href="https://github.com/Mobsites" target="_blank">GitHub</a> and licensed freely under the open-sourced <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank">MIT</a> license.</p>
+<p>To be sure, some of our <em><strong>freewares</strong></em> our themselves based on open source offerings, and, thus, it seems only right to offer them freely 
+and openly as well.</p>
+</div>
+</div>
