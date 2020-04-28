@@ -44,5 +44,5 @@ steps:
 
 # Build site
 - script: dotnet build --configuration Release
-  workingDirectory: src
+  workingDirectory: mobsites.github.io/src
   displayName: Build Mobsites
