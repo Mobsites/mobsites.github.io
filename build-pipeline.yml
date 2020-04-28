@@ -1,6 +1,25 @@
 # Copyright (c) 2020 Allan Mobley. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
+resources:
+    repositories:
+    - repository: AppDrawer # The name used to reference this repository in the checkout step
+      type: github
+      endpoint: github.com_allan-mobley-jr
+      name: Mobsites/Blazor.AppDrawer
+    - repository: Icon # The name used to reference this repository in the checkout step
+      type: github
+      endpoint: github.com_allan-mobley-jr
+      name: Mobsites/Blazor.Icon
+    - repository: SignaturePad # The name used to reference this repository in the checkout step
+      type: github
+      endpoint: github.com_allan-mobley-jr
+      name: Mobsites/Blazor.SignaturePad
+    - repository: TopAppBar # The name used to reference this repository in the checkout step
+      type: github
+      endpoint: github.com_allan-mobley-jr
+      name: Mobsites/Blazor.TopAppBar
+
 trigger:
   - master
 
@@ -8,6 +27,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- checkout: self
+- checkout: AppDrawer
+- checkout: Icon
+- checkout: SignaturePad
+- checkout: TopAppBar
 
 # Specify a particular version of the .NET SDK
 - task: UseDotNet@2
