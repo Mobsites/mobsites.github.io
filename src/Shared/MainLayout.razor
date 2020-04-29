@@ -34,43 +34,42 @@
     @bind-BackgroundMode="BackgroundMode"
     BackgroundImage="app-drawer-bg.jpg">
     <AppDrawerContent>
-        <AppDrawerHeader Image="mobsites-logo.png" UseImage />
-        <AppDrawerContentList>
-            <AppDrawerContentDivider OverrideParentColors />
-            <AppDrawerContentListAction Href="/" tabindex="0">
-                <Icon Variant="home" Text="Home" Spacing="20" Style="padding-left: 15px;" />
-            </AppDrawerContentListAction>
+        <AppDrawerHeader>
+            <AppDrawerHeaderLogo Src="mobsites-logo.png" />
+        </AppDrawerHeader>
+        <AppDrawerContentDivider OverrideParentColors />
+        <AppDrawerContentAction Href="/">
+            <Icon Variant="home" Text="Home" Spacing="20" Style="padding-left: 15px;" />
+        </AppDrawerContentAction>
 
-            <AppDrawerContentSubheader OverrideParentColors>Theme</AppDrawerContentSubheader>
-            <AppDrawerContentListAction @onclick="@((e) => ToggleTheme())">
-                <Icon Variant="invert_colors" Text="@themeText" Spacing="20" Style="padding-left: 15px;" />
-            </AppDrawerContentListAction>
+        <AppDrawerContentSubheader OverrideParentColors>Theme</AppDrawerContentSubheader>
+        <AppDrawerContentAction @onclick="@((e) => ToggleTheme())">
+            <Icon Variant="invert_colors" Text="@themeText" Spacing="20" Style="padding-left: 15px;" />
+        </AppDrawerContentAction>
 
-            <AppDrawerContentDivider OverrideParentColors />
-            <AppDrawerContentSubheader OverrideParentColors>Blazor Components</AppDrawerContentSubheader>
-            <AppDrawerContentListAction Href="/blazor/app-drawer">
-                <Icon Variant="menu_open" Text="App Drawer" Spacing="20" Style="padding-left: 15px;" />
-            </AppDrawerContentListAction>
-            <AppDrawerContentListAction Href="/blazor/icon">
-                <Icon Variant="info" Text="Icon" Spacing="20" Style="padding-left: 15px;" />
-            </AppDrawerContentListAction>
-            <AppDrawerContentListAction Href="/blazor/signature-pad">
-                <Icon Variant="edit" Text="Signature Pad" Spacing="20" Style="padding-left: 15px;" />
-            </AppDrawerContentListAction>
-            <AppDrawerContentListAction Href="/blazor/top-app-bar">
-                <Icon Variant="line_weight" Text="Top App Bar" Spacing="20" Style="padding-left: 15px;" />
-            </AppDrawerContentListAction>
+        <AppDrawerContentDivider OverrideParentColors />
+        <AppDrawerContentSubheader OverrideParentColors>Blazor Components</AppDrawerContentSubheader>
+        <AppDrawerContentAction Href="/blazor/app-drawer">
+            <Icon Variant="menu_open" Text="App Drawer" Spacing="20" Style="padding-left: 15px;" />
+        </AppDrawerContentAction>
+        <AppDrawerContentAction Href="/blazor/icon">
+            <Icon Variant="info" Text="Icon" Spacing="20" Style="padding-left: 15px;" />
+        </AppDrawerContentAction>
+        <AppDrawerContentAction Href="/blazor/signature-pad">
+            <Icon Variant="edit" Text="Signature Pad" Spacing="20" Style="padding-left: 15px;" />
+        </AppDrawerContentAction>
+        <AppDrawerContentAction Href="/blazor/top-app-bar">
+            <Icon Variant="line_weight" Text="Top App Bar" Spacing="20" Style="padding-left: 15px;" />
+        </AppDrawerContentAction>
 
-            <AppDrawerContentDivider OverrideParentColors />
-            <AppDrawerContentSubheader OverrideParentColors>Common Attributes</AppDrawerContentSubheader>
-            <AppDrawerContentListAction Href="/blazor/themes">
-                <Icon Variant="palette" Text="Themes" Spacing="20" Style="padding-left: 15px;" />
-            </AppDrawerContentListAction>
-            <AppDrawerContentListAction Href="/blazor/keeping-state">
-                <Icon Variant="cached" Text="Keeping State" Spacing="20" Style="padding-left: 15px;" />
-            </AppDrawerContentListAction>
-
-        </AppDrawerContentList>
+        <AppDrawerContentDivider OverrideParentColors />
+        <AppDrawerContentSubheader OverrideParentColors>Common Attributes</AppDrawerContentSubheader>
+        <AppDrawerContentAction Href="/blazor/themes">
+            <Icon Variant="palette" Text="Themes" Spacing="20" Style="padding-left: 15px;" />
+        </AppDrawerContentAction>
+        <AppDrawerContentAction Href="/blazor/keeping-state">
+            <Icon Variant="cached" Text="Keeping State" Spacing="20" Style="padding-left: 15px;" />
+        </AppDrawerContentAction>
     </AppDrawerContent>
 </AppDrawer>
 
