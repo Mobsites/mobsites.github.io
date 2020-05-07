@@ -7,7 +7,6 @@ resources:
       type: github
       endpoint: github.com_allan-mobley-jr
       name: Mobsites/Blazor.AppDrawer
-      ref: v1.0.0
     - repository: Icon # The name used to reference this repository in the checkout step
       type: github
       endpoint: github.com_allan-mobley-jr
@@ -20,7 +19,6 @@ resources:
       type: github
       endpoint: github.com_allan-mobley-jr
       name: Mobsites/Blazor.TopAppBar
-      ref: v1.0.0
 
 trigger:
   - master
