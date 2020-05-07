@@ -30,6 +30,7 @@
 </TopAppBar>
 <AppDrawer
     KeepState
+    Class="@TopAppBar.AdjustmentMarkerClass"
     Id=""
     Color="white"
     DarkModeColor="#00bef2"
@@ -75,7 +76,11 @@
     </AppDrawerContent>
 </AppDrawer>
 
+@{
+    string css = $"{TopAppBar.AdjustmentMarkerClass} {AppDrawer.MainContentMarker}";
+}
 <AppContent 
+    Class="@css"
     BackgroundMode="BackgroundMode" 
     DarkModeBackgroundColor="black"
     DarkModeColor="#00bef2"

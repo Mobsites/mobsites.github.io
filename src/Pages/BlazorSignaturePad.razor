@@ -19,7 +19,7 @@
   <div class="stackedit__html"><h1 id="blazor-signature-pad">Blazor Signature Pad</h1>
 <p>A Blazor UI component that utilizes <a href="https://github.com/szimek">Szymon Nowak</a>’s Signature Pad javascript library to implement smooth signature drawing on a HTML5 canvas.</p>
 <p><em><strong>Don’t worry! You don’t have to touch any javascript to make use of this library. Blazor Signature Pad abstracts all of that away for you. Just plug and play, baby.</strong></em></p>
-    <SignaturePad KeepState Id="1" BackgroundMode="MainLayout.BackgroundMode">
+    <SignaturePad KeepState BackgroundMode="MainLayout.BackgroundMode">
       <SignaturePadFooter FooterDirective="Sign above">
         <SignaturePadPen><Icon Variant="edit" /></SignaturePadPen>
         <SignaturePadClear><Icon Variant="clear" /></SignaturePadClear>
@@ -31,7 +31,7 @@
 <ol>
 <li>Add <a href="https://www.nuget.org/packages/Mobsites.Blazor.SignaturePad/">Nuget</a> package:</li>
 </ol>
-<pre class=" language-shell"><code class="prism  language-shell">dotnet add package Mobsites.Blazor.SignaturePad --version 1.1.2
+<pre class=" language-shell"><code class="prism  language-shell">dotnet add package Mobsites.Blazor.SignaturePad
 </code></pre>
 <ol start="2">
 <li>Add the following link tag to <code>index.html</code> (WebAssembly) or <code>_Host.cshtml</code> (Server) just above the closing <code>&lt;/head&gt;</code> tag, along with your other link tags:</li>
