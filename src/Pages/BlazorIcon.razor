@@ -19,9 +19,9 @@
   <div class="stackedit__html"><h1 id="blazor-icon">Blazor Icon</h1>
 <p>A Blazor UI component for rendering an icon.</p>
 <p>We know,  “Who needs a component to render a simple icon?”</p>
-<p>And you would be right…except an ordinary html <code>&lt;i&gt;&lt;/i&gt;</code> tag doesn’t come with built-in sizes or themes,<br>
+<p>And you would be right—except an ordinary html <code>&lt;i&gt;&lt;/i&gt;</code> tag doesn’t come with built-in sizes or themes,<br>
 such as dark and light modes, now does it?</p>
-<p>Go ahead. Hit this icon <Icon Variant="invert_colors" Clickable @onclick="@((e) => MainLayout.ToggleContrastMode())" /> and watch how it and the others below change colors. See what we mean?</p>
+<p>Go ahead. Hit this icon <Icon Variant="invert_colors" Clickable @onclick="@((e) => MainLayout.ToggleContrastMode())" /> and watch how it change colors. See what we mean?</p>
 <p>And that’s not all. This component can keep state should the need arise.</p>
 <p>Last but not least, we plan to incorporate other icon libraries as well. Imagine: One icon to rule them all.</p>
 <h2 id="currently-supports">Currently Supports</h2>
@@ -36,26 +36,20 @@ such as dark and light modes, now does it?</p>
 </ul>
 <h2 id="getting-started">Getting Started</h2>
 <ol>
-<li>Add <a href="https://www.nuget.org/packages/Mobsites.Blazor.Icon/">Nuget</a> package:</li>
-</ol>
-<pre class=" language-shell"><code class="prism  language-shell">dotnet add package Mobsites.Blazor.Icon
+<li>Add <a href="https://www.nuget.org/packages/Mobsites.Blazor.Icon/">Nuget</a> package:<pre class=" language-shell"><code class="prism  language-shell">dotnet add package Mobsites.Blazor.Icon
 </code></pre>
-<ol start="2">
-<li>Add the following link tag to <code>index.html</code> (WebAssembly) or <code>_Host.cshtml</code> (Server) just above the closing <code>&lt;/head&gt;</code> tag, along with your other link tags:</li>
-</ol>
-<pre class=" language-html"><code class="prism  language-html"><span class="token comment">&lt;!-- The order of your style links obviously matters, so reorder them if any conflicts arise --&gt;</span>
+</li>
+<li>Add the following link tag to <code>index.html</code> (WebAssembly) or <code>_Host.cshtml</code> (Server) just above the closing <code>&lt;/head&gt;</code> tag, along with your other link tags:<pre class=" language-html"><code class="prism  language-html"><span class="token comment">&lt;!-- The order of your style links obviously matters, so reorder them if any conflicts arise --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_content/Mobsites.Blazor.Icon/bundle.css<span class="token punctuation">"</span></span>  <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span>  <span class="token punctuation">/&gt;</span></span>
 </code></pre>
-<ol start="3">
-<li>Add the following using statement to the <code>_Imports.razor</code> file:</li>
-</ol>
-<pre class=" language-html"><code class="prism  language-html">@@using Mobsites.Blazor
+</li>
+<li>Add the following using statement to the <code>_Imports.razor</code> file:<pre><code>@@using Mobsites.Blazor
 </code></pre>
-<ol start="4">
-<li>Add the following markup to whatever Blazor page or component you like:</li>
-</ol>
-<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>home<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</li>
+<li>Add the following markup to whatever Blazor page or component you like:<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">Variant</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>home<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
 </code></pre>
+</li>
+</ol>
 <p>That’s it. Run your app, and you should now see the Material home icon there.</p>
 <h2 id="attribute-highlights">Attribute Highlights</h2>
 <p>Below highlights the attributes specific to this component. For info on attributes common to all components, see the <code>Common Attributes</code> pages.</p>
@@ -99,7 +93,7 @@ such as dark and light modes, now does it?</p>
 <h2 id="keeping-state">Keeping State</h2>
 <pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Icon</span> <span class="token attr-name">KeepState</span> <span class="token attr-name">...</span> <span class="token punctuation">/&gt;</span></span>
 </code></pre>
-<p>Keeping state is as simple as setting the <code>KeepState</code> attribute on the Icon as above. This component will then keep relevant state in the browser’s storage. To get a sense of this, check out the <a href="https://www.mobsites.com/Blazor.Icon/">demo</a>, change some options, and refresh the browser to force a reload of the app.</p>
+<p>Keeping state is as simple as setting the <code>KeepState</code> attribute on the Icon as above. This component will then keep relevant state in the browser’s storage. To get a sense of this, check out the <a href="https://icon.mobsites.com">demo</a>, change some options, and refresh the browser to force a reload of the app.</p>
 <p>To learn more about this feature, which is common to all our stateful components, check out <a href="/blazor/keeping-state">Keeping State</a>.</p>
 </div>
 </div>

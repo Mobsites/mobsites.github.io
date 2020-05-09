@@ -16,10 +16,33 @@
 }
 
 <div class="stackedit">
-  <div class="stackedit__html">
-    <h1>Blazor Top App Bar</h1>
-
-    Docs coming soon!
-    
-  </div>
+  <div class="stackedit__html"><h1 id="top-app-bar">Top App Bar</h1>
+<p>A Blazor UI component that utilizes the <a href="https://material.io/develop/web/components/top-app-bar/">MDC Top App Bar</a> library and acts as a container for items such as application title, navigation icon, and action items.</p>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li>
+<p>Add <a href="https://www.nuget.org/packages/Mobsites.Blazor.TopAppBar/">Nuget</a> package:</p>
+<pre class=" language-shell"><code class="prism  language-shell">dotnet add package Mobsites.Blazor.TopAppBar
+</code></pre>
+</li>
+<li>
+<p>Add the following link tag to <code>index.html</code> (WebAssembly) or <code>_Host.cshtml</code> (Server) just above the closing <code>&lt;/head&gt;</code> tag, along with your other link tags:</p>
+<pre class=" language-html"><code class="prism  language-html"><span class="token comment">&lt;!-- The order of your style links obviously matters, so reorder them if any conflicts arise --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_content/Mobsites.Blazor.TopAppBar/bundle.css<span class="token punctuation">"</span></span>  <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span>  <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+</li>
+<li>
+<p>Add the following script tag to <code>index.html</code> (WebAssembly) or <code>_Host.cshtml</code> (Server) just above the closing <code>&lt;/body&gt;</code> tag, along with your other script tags*:</p>
+<pre class=" language-html"><code class="prism  language-html"><span class="token comment">&lt;!-- Place this below any _framework scripts! --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span>  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_content/Mobsites.Blazor.TopAppBar/bundle.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>*<strong>Be sure to place this script tag below any _framework scripts needed by the Blazor application!</strong></p>
+</li>
+<li>
+<p>Add the following using statement to the <code>_Imports.razor</code> file:</p>
+<pre><code>@@using Mobsites.Blazor
+</code></pre>
+</li>
+</ol>
+</div>
 </div>
